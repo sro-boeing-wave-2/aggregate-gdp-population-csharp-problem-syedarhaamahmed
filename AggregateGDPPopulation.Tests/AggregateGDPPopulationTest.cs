@@ -17,7 +17,7 @@ namespace AggregateGDPPopulation.Tests
             Class1 aggregateData = new Class1();
             aggregateData.AggregateData();
             string actualContent = "";
-            using (StreamReader reader = new StreamReader(@"E:\workspace\c#\aggregate-gdp-population-csharp-problem-syedarhaamahmed\AggregateGDPPopulation.Tests\output\output.json"))
+            using (StreamReader reader = new StreamReader(@"../../../../AggregateGDPPopulation.Tests/output/output.json"))
             {
                 actualContent = reader.ReadToEnd();
             }
