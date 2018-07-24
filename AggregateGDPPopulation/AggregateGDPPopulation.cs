@@ -51,8 +51,8 @@ namespace AggregateGDPPopulation
 
         public async void AggregateData()
         {
-            string Data = await FileRead(@"..\..\..\..\AggregateGDPPopulation\data\datafile.csv");
-            string MapperData = await FileRead(@"..\..\..\..\AggregateGDPPopulation\data\country-list.json");
+            string Data = await FileRead(@"../../../../AggregateGDPPopulation/data/datafile.csv");
+            string MapperData = await FileRead(@"../../../../AggregateGDPPopulation/data/country-list.json");
             Convert = ParseMapper(MapperData);
             string[] DataString = Data.Replace("\"", String.Empty).Trim().Split('\n');
             string[] HeaderValue = DataString[0].Split(',');
@@ -94,10 +94,10 @@ namespace AggregateGDPPopulation
                 }
             }
 
-            await FileWrite(@"..\..\..\expected-output.json", JsonConvert.SerializeObject(JSONContainer));
+            await FileWrite(@"../../../expected-output.json", JsonConvert.SerializeObject(JSONContainer));
         }
     }
-
+    
 
 
 

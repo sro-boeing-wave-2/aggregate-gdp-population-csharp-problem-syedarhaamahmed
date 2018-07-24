@@ -17,13 +17,13 @@ namespace AggregateGDPPopulation.Tests
             Class1 aggregateData = new Class1();
             aggregateData.AggregateData();
             string actualContent = "";
-            using (StreamReader reader = new StreamReader(Environment.CurrentDirectory + @"\output\output.json"))
+            using (StreamReader reader = new StreamReader(Environment.CurrentDirectory + @"/output/output.json"))
             {
                 actualContent = reader.ReadToEnd();
             }
 
             string ExpectedContent = "";
-            using (StreamReader reader = new StreamReader(@"..\..\..\expected-output.json"))
+            using (StreamReader reader = new StreamReader(@"../../../expected-output.json"))
             {
                 ExpectedContent = reader.ReadToEnd();
             }
