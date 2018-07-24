@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+
 
 namespace AggregateGDPPopulation
 {
@@ -15,20 +17,20 @@ namespace AggregateGDPPopulation
             JSONContainer = new Dictionary<string, Dictionary<string, float>>();
         }
 
-        public static string FileRead(string FilePath)
+        public static async Task<string> FileRead(string FilePath)
         {
             using (StreamReader sr = new StreamReader(FilePath))
             {
-                string ReadFile = sr.ReadToEnd();
-                return ReadFile;
+               string ReadFile = await sr.ReadToEndAsync();
+               return ReadFile;
             }
         }
 
-        public static void FileWrite(string FilePath, string data)
+        public static async Task FileWrite(string FilePath, string data)
         {
             using (StreamWriter sr = new StreamWriter(FilePath))
             {
-                sr.Write(data);
+                await sr.WriteAsync(data);
             }
         }
 
@@ -47,10 +49,10 @@ namespace AggregateGDPPopulation
             return mapper;
         }
 
-        public void AggregateData()
+        public async void AggregateData()
         {
-            string Data = FileRead(@"..\..\..\..\AggregateGDPPopulation\data\datafile.csv");
-            string MapperData = FileRead(@"..\..\..\..\AggregateGDPPopulation\data\country-list.json");
+            string Data = await FileRead(@"..\..\..\..\AggregateGDPPopulation\data\datafile.csv");
+            string MapperData = await FileRead(@"..\..\..\..\AggregateGDPPopulation\data\country-list.json");
             Convert = ParseMapper(MapperData);
             string[] DataString = Data.Replace("\"", String.Empty).Trim().Split('\n');
             string[] HeaderValue = DataString[0].Split(',');
@@ -92,7 +94,7 @@ namespace AggregateGDPPopulation
                 }
             }
 
-            FileWrite("output/output.json", JsonConvert.SerializeObject(JSONContainer));
+            await FileWrite("output/output.json", JsonConvert.SerializeObject(JSONContainer));
         }
     }
 
