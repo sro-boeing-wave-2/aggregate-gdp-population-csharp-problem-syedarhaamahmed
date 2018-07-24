@@ -94,7 +94,7 @@ namespace AggregateGDPPopulation
                 }
             }
 
-            await FileWrite(@"../../../expected-output.json", JsonConvert.SerializeObject(JSONContainer));
+            await FileWrite(@"..\..\..\expected-output.json", JsonConvert.SerializeObject(JSONContainer));
         }
     }
 
