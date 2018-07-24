@@ -27,8 +27,8 @@ namespace AggregateGDPPopulation.Tests
             {
                 ExpectedContent = reader.ReadToEnd();
             }
-            ExpectedContent = ExpectedContent.Replace("\r\n", "").Replace("\t", "").Replace(" ", "");
-            actualContent = actualContent.Replace("\r\n", "").Replace("\t", "").Replace(" ", "");
+            ExpectedContent = ExpectedContent.Replace("\n", "").Replace("\t", "").Replace(" ", "");
+            actualContent = actualContent.Replace("\n", "").Replace("\t", "").Replace(" ", "");
             Assert.Equal(ExpectedContent, actualContent);
         }
     }
